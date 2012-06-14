@@ -9,7 +9,7 @@ This puppet module installs an iptables configuration, suitable for loading via 
   ```puppet
   include "iptables::resource"
 
-  iptables::resource { 'webserver1_web':
+  iptables::resource { 'apache':
           port     => ["80","443"],
   }
   ```
