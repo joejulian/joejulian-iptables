@@ -6,12 +6,13 @@ This puppet module installs an iptables configuration, suitable for loading via 
 ###Resource:
 1. Install this module
 1. Load the rule in the resource it affects
-  `include "iptables::resource"
+  ```puppet
+  include "iptables::resource"
 
-   iptables::resource { 'webserver1_web':
+  iptables::resource { 'webserver1_web':
           port     => ["80","443"],
- }`
-
+  }
+  ```
 1. Optional Parameters:
  1. 'table': filter,nat,mangle,raw,{user defined}. default: mangle
  1. 'protocol': tcp,udp,udplite,icmp,esp,ah,sctp or all. default: ["tcp","udp"]
@@ -28,10 +29,16 @@ This puppet module installs an iptables configuration, suitable for loading via 
  1. 'fragment': true,false,undef. default undef
  1. 'not_fragment': true,false,undef. default undef
  1. 'set_counters': initialize counter
- * See iptables man page for the match and target extensions. Prepend 'not_' if the extensions supports the negative.
-###Node
+
+* See iptables man page for the match and target extensions. Prepend 'not_' if the extensions supports the negative.
+
+###Node:
+
 1. In the node definition
-  `class {"iptables": }`
+```puppet
+
+  class { "iptables":   }
+  ```
 1. Optional boolean parameter 'reload' can be reset to prevent iptables from being reloaded in the event of a configuration change. This would cause the rules to only be loaded at installation time and on subsequent boots.
 
 Caveats:
